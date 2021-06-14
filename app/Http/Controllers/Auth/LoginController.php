@@ -37,4 +37,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function username()
+    {
+        return 'identification_number'; //ahora utilizaremos la columna name de la tabla users
+    }
 }

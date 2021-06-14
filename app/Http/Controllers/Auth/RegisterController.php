@@ -49,10 +49,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+    
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'max:5', 'confirmed'],
+            'identification_number' => ['required', 'string','max:10', 'unique:users'],
         ]);
     }
 
@@ -64,19 +66,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'access_key' => $this->generar_token_seguro(33)
+            'identification_number' => $data['identification_number'],
+            'account_number' => $this->generarNumeroCuenta($data['identification_number'])
         ]);
     }
 
-    public function generar_token_seguro($longitud) {
-        if ($longitud < 4) {
-            $longitud = 4;
-        }
-    
-        return bin2hex(random_bytes(($longitud - ($longitud % 2)) / 2));
+    public function generarNumeroCuenta($identification) {
+        $numeroCuenta = rand(1,1000);
+        return $numeroCuenta;
     }
 }

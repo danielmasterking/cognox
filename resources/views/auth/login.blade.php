@@ -20,12 +20,11 @@
                                 @csrf
                                 <div class="form-group">
                                    
-                                    <input id="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" 
-                                    name="email" value="{{ old('email') }}"  placeholder="Enter Email Address..." 
-                                    aria-describedby="emailHelp"
-                                    required autocomplete="email" autofocus>
+                                    <input id="identification_number" type="text" class="form-control form-control-user @error('identification_number') is-invalid @enderror" 
+                                    name="identification_number" value="{{ old('identification_number') }}"  placeholder="Ingresa tu numero de identificacion" 
+                                    required autocomplete="identification_number" autofocus>
 
-                                    @error('email')
+                                    @error('identification_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -50,7 +49,7 @@
                                         <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="custom-control-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('Recordarme') }}
                                         </label>
                                     </div>
                                 </div>
@@ -73,12 +72,12 @@
                                 
                                 @if (Route::has('password.request'))
                                     <a class="small" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('Recuperar contraseña?') }}
                                     </a>
                                 @endif
                             </div>
                             <div class="text-center">
-                                <a class="small" href="{{ route('register') }}">Create an Account!</a>
+                                <a class="small" href="{{ route('register') }}">Crear cuenta!</a>
                             </div>
                         </div>
                     </div>

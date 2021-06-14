@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::resource('/', 'LandingController');
+Route::resource('/', 'HomeController');
 
 Route::resource('/landing', 'LandingController');
 
