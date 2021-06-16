@@ -19,15 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/', 'HomeController');
 
-Route::resource('/landing', 'LandingController');
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user', 'UserController@index')->name('user');
+Route::get('/transaction', 'HomeController@transactions')->name('transaction');
 
-Route::get('/documentation', 'LandingController@documentation')->name('documentation');
+Route::get('/logout', 'UserController@logout')->name('logout');
 
-Route::get('/api_usage', 'HomeController@apiUsage')->name('api_usage');
+Route::post('/record', 'HomeController@record');
+

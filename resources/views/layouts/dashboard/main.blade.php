@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Coinlayer</title>
+    <title>Cognox</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -58,47 +58,32 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#" >
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Upgrade</span>
+                <a class="nav-link" href="{{ route('transaction') }}" >
+                    <i class="fas fa-piggy-bank"></i>
+                    <span>Transacciones Bancarias</span>
                 </a>
 
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#" >
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Subscription plan</span>
+                <a class="nav-link" href="{{ route('transaction') }}" >
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Estado de la cuenta</span>
                 </a>
                
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" >
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Account</span>
+                <a class="nav-link collapsed" href="#"  onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Salir</span>
                 </a>
                
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" >
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Payment</span>
-                </a>
-               
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" >
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Api usage</span>
-                </a>
-               
-            </li>
-    
+            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -158,7 +143,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -195,13 +180,13 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            {{-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
             <!-- End of Footer -->
 
         </div>
@@ -229,14 +214,14 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="#" onclick="logout()">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('js/app.js')}}"></script>
+    {{-- <script src="{{asset('js/app.js')}}"></script> --}}
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -245,6 +230,20 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="{{ asset('js/scriptsJs/home.js') }}"></script>
+    <script>
+        function logout() {
+            let confirmar = confirm('Seguro desea salir?');
+            if(confirmar) {
+                location.href ='{{ route("logout") }}';
+            }
+
+            return false;
+        }
+    </script>
 
 </body>
 

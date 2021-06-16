@@ -42,4 +42,5 @@ class LoginController extends Controller
     {
         return 'identification_number'; //ahora utilizaremos la columna name de la tabla users
     }
+
 }

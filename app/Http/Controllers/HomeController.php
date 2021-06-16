@@ -34,5 +34,14 @@ class HomeController extends Controller
         ]);
     }
 
+    public function transactions()
+    {
+        $idUsuario = Auth::id();
+        $usuario = User::find($idUsuario);
+        
+        return view('home.transaction',[
+            'userData' => $usuario
+        ]);
+    }
        
 }

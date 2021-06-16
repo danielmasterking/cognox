@@ -72,12 +72,16 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'identification_number' => $data['identification_number'],
-            'account_number' => $this->generarNumeroCuenta($data['identification_number'])
+            'account_number' => $this->generarNumeroCuenta($data['identification_number']),
+            'amount' => $data['amount'],
+            'amount_current' => $data['amount_current'],
+            'account_numer_current' => $this->generarNumeroCuenta($data['identification_number']),
+            
         ]);
     }
 
     public function generarNumeroCuenta($identification) {
-        $numeroCuenta = rand(1,1000);
+        $numeroCuenta = rand(1,1000000);
         return $numeroCuenta;
     }
 }

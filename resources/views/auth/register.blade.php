@@ -40,12 +40,41 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-sm-12 mb-3 mb-sm-0">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
                                 
                                 <input id="identification_number" type="number" class="form-control form-control-user @error('identification_number') is-invalid @enderror" 
                                 name="identification_number" value="{{ old('identification_number') }}" required autocomplete="identification_number" autofocus  placeholder="Numero de identificacion">
 
                                 @error('identification_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                
+                                <input id="amount" type="number" class="form-control form-control-user @error('amount') is-invalid @enderror" 
+                                name="amount" value="{{ old('amount') }}" required autocomplete="amount" autofocus  placeholder="Monto inicial cuenta de ahorros">
+
+                                @error('amount')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            
+                        </div>
+
+
+                        <div class="form-group row">
+                        
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                
+                                <input id="amount_current" type="number" class="form-control form-control-user @error('amount_current') is-invalid @enderror" 
+                                name="amount_current" value="{{ old('amount_current') }}" required autocomplete="amount_current" autofocus  placeholder="Monto inicial cuenta corriente">
+
+                                @error('amount_current')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -57,7 +86,7 @@
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input id="password" type="password" class="form-control form-control-user @error('password') is-invalid @enderror" 
-                                name="password" required autocomplete="new-password" placeholder="Contraseña" onkeypress="return valideKey(event);">
+                                name="password" required autocomplete="new-password" placeholder="Contraseña" onkeypress="return valideKey(event);" onkeydown="return ValidaLongitud(this, 4)">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -68,7 +97,7 @@
                             <div class="col-sm-6">
                                 
                                 <input id="password-confirm" type="password" class="form-control form-control-user" 
-                                name="password_confirmation" required autocomplete="new-password" placeholder="Confirmar contraseña" onkeypress="return valideKey(event);">
+                                name="password_confirmation" required autocomplete="new-password" placeholder="Confirmar contraseña" onkeypress="return valideKey(event);" onkeydown="return ValidaLongitud(this, 4)">
                             </div>
                         </div>
                         
@@ -85,10 +114,10 @@
                     </form>
                     <hr>
                     <div class="text-center">
-                        <a class="small" href="{{ route('password.request') }}">Forgot Password?</a>
+                        <a class="small" href="{{ route('password.request') }}">Recuperar contraseña?</a>
                     </div>
                     <div class="text-center">
-                        <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
+                        <a class="small" href="{{ route('login') }}">Ya tengo una cuenta</a>
                     </div>
                 </div>
             </div>
