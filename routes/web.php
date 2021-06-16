@@ -31,3 +31,7 @@ Route::post('/record', 'HomeController@record');
 
 Route::get('status', 'HomeController@status')->name('status');
 
+Route::get('add_tercero', 'TerceroController@addTercero')->name('add_tercero');
+
+Route::post('insert_tercero', 'TerceroController@insertTercero')->name('insert_tercero');
+

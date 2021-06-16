@@ -26,7 +26,7 @@
             </div>
 
             <div class="col-md-6 col-xs-12"> 
-              <input type="text" class="form-control" placeholder="Valor a consignar" id="value_prop">
+              <input type="number" class="form-control" placeholder="Valor a consignar" id="value_prop">
             </div>
           </div>
           <br>
@@ -46,8 +46,31 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-          <button class="btn btn-primary">Registrar cuenta</button>
+          <a href="{{ route("add_tercero") }}" class="btn btn-primary">Registrar cuenta</a>
       </div> 
+
+      <table class="table table-striped">
+        <thead>
+           <tr>
+             <th>Nombre</th>
+             <th>identificacion</th>
+             <th>Cuenta</th>
+             <th></th>
+           </tr>
+        </thead>
+        <tbody>
+          @foreach ($terceros as $tercero)
+            <tr>
+                <td>{{$tercero->name}}</td>
+                <td>{{$tercero->identification}}</td>
+                <td>{{$tercero->account_number}}</td>
+                <td>
+                  <a href="#">Transferir</a>
+                </td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
     </div>
   </div>
   

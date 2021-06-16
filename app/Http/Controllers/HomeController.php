@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Account_history;
+use App\Tercero;
 
 class HomeController extends Controller
 {
@@ -39,9 +40,10 @@ class HomeController extends Controller
     {
         $idUsuario = Auth::id();
         $usuario = User::find($idUsuario);
-        
+        $terceros = Tercero::where("id_user_assigned", $idUsuario)->get();
         return view('home.transaction',[
-            'userData' => $usuario
+            'userData' => $usuario,
+            'terceros' => $terceros
         ]);
     }
 
