@@ -57,6 +57,15 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('home') }}" >
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('transaction') }}" >
                     <i class="fas fa-piggy-bank"></i>
