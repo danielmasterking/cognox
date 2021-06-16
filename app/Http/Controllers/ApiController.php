@@ -93,15 +93,25 @@ class ApiController extends Controller
         $usuario = User::find($post['id_user']);
         
         if($post['account_prop'] == 'ahorros') {
+            $account = $usuario->account_number;
             $usuario->amount +=  $post['value_prop'];
         }else {
+            $account = $usuario->account_numer_current;
             $usuario->amount_current +=  $post['value_prop'];
         }
 
         $usuario->save();
         
+        $history = new Account_history;
         
-
+        $history->amount = $post['value_prop'];
+        $history->amount = $post['value_prop'];
+        $history->account_number  = $account;
+        $history->movement  = 'Consignacion';
+        $history->date  = date('Y-m-d');
+        $history->account_number_current = 0;
+        $history->save();
+        
         return response()->json($usuario);
     }
 }

@@ -14,5 +14,6 @@ class Account_history extends Model
         'date', 
         'created_at', 
         'updated_at', 
+        'account_number_current'
     ];
 }

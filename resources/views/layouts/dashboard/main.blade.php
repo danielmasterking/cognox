@@ -76,7 +76,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('transaction') }}" >
+                <a class="nav-link" href="{{ route("status") }}" >
                     <i class="fas fa-money-check-alt"></i>
                     <span>Estado de la cuenta</span>
                 </a>

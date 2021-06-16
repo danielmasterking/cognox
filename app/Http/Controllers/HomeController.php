@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use App\Account_history;
 
 class HomeController extends Controller
 {
@@ -41,6 +42,18 @@ class HomeController extends Controller
         
         return view('home.transaction',[
             'userData' => $usuario
+        ]);
+    }
+
+    public function status() {
+        $idUsuario = Auth::id();
+        $usuario = User::find($idUsuario);
+        $historySaving = Account_history::where("account_number", $usuario->account_number )->get();
+
+        $historyCurrent = Account_history::where("account_number", $usuario->account_numer_current  )->get();
+        return view('home.status',[
+            'historySaving' => $historySaving,
+            'historyCurrent' => $historyCurrent,
         ]);
     }
        

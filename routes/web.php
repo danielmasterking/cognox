@@ -29,3 +29,5 @@ Route::get('/logout', 'UserController@logout')->name('logout');
 
 Route::post('/record', 'HomeController@record');
 
+Route::get('status', 'HomeController@status')->name('status');
+
