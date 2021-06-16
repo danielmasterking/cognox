@@ -88,13 +88,20 @@ class ApiController extends Controller
 
 
     public function record(Request $request) {
-        //print_r($_POST);
-        $idUsuario = Auth::id();
-        $usuario = User::find($idUsuario);
+        
         $post = $request->post();
+        $usuario = User::find($post['id_user']);
+        
+        if($post['account_prop'] == 'ahorros') {
+            $usuario->amount +=  $post['value_prop'];
+        }else {
+            $usuario->amount_current +=  $post['value_prop'];
+        }
+
+        $usuario->save();
         
         
 
-        return response()->json($post);
+        return response()->json($usuario);
     }
 }

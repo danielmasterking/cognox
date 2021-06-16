@@ -17,10 +17,11 @@
         <form id="form-prop">
           <div class="row">
             <div class="col-md-6 col-xs-12"> 
+              <input type="hidden" value="{{$userData->id}}" id="id_user">
               <Select class="form-control" id="account_prop">
                 <option value="" selected>Selecciona una cuenta</option>
-                <option value="{{$userData->account_number}}">Ahorros</option>
-                <option value="{{$userData->account_numer_current }}">Corriente</option>
+                <option value="ahorros">Ahorros</option>
+                <option value="corriente">Corriente</option>
               </Select>
             </div>
 
